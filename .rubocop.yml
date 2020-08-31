@@ -17,6 +17,7 @@ AllCops:
     - tmp/test_apps/**/*
     - gemfiles/rails_52/vendor/bundle/**/*
     - gemfiles/rails_60_turbolinks/vendor/bundle/**/*
+    - gemfiles/rails_60_webpacker/vendor/bundle/**/*
     - vendor/bundle/**/*
 
   Include:
