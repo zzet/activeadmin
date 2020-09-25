@@ -37,7 +37,7 @@ version: 2.1
   save_cache:
     key: bundler-dependencies-{{ checksum "current_gemfile.lock" }}-{{ .Environment.CIRCLE_JOB }}
     paths:
-      - vendor/bundle
+      - .bundle
 
 .create_test_app: &create_test_app
   run:
