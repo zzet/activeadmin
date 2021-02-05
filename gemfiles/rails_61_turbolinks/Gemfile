@@ -10,7 +10,7 @@ group :development, :test do
   gem "jruby-openssl", "~> 0.10.5", platform: :jruby
 
   gem "draper", "~> 4.0"
-  gem "devise"
+  gem "devise", github: "heartcombo/devise", ref: "0cd72a56f984a7ff089246f87a8b259120545edd"
 
   gem "rails", "~> 6.1.0"
   gem "activerecord-jdbcsqlite3-adapter", "~> 61.a", github: "jruby/activerecord-jdbc-adapter", platform: :jruby
