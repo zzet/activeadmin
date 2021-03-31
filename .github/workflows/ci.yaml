@@ -95,4 +95,4 @@ jobs:
 
       - name: Run Cucumber features
         run: |
-          bin/parallel_cucumber --fail-fast
+          bin/cucumber --fail-fast
