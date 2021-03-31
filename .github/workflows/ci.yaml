@@ -87,17 +87,6 @@ jobs:
       - name: Create test app
         run: bin/rake setup
 
-      - name: Restore cached RSpec runtimes
-        uses: actions/cache@v2
-        with:
-          path: tmp/parallel_runtime_rspec.log
-          key: runtimes-rspec-${{ matrix.ruby }}-${{ matrix.deps }}-${{ hashFiles('tmp/parallel_runtime_rspec.log') }}
-
-      - name: Run RSpec tests
-        run: |
-          bin/parallel_rspec
-          RSPEC_FILESYSTEM_CHANGES=true bin/rspec
-
       - name: Restore cached cucumber runtimes
         uses: actions/cache@v2
         with:
@@ -107,16 +96,3 @@ jobs:
       - name: Run Cucumber features
         run: |
           bin/parallel_cucumber --fail-fast
-          bin/cucumber --profile filesystem-changes
-          bin/cucumber --profile class-reloading
-
-      - name: Format coverage
-        run: |
-          bin/prepare_coverage
-          mv coverage/.resultset.json coverage/raw.${{ matrix.ruby }}.${{ matrix.deps }}.json
-
-      - name: Save partial coverage as an artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage
-          path: coverage/raw.${{ matrix.ruby }}.${{ matrix.deps }}.json
